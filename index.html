@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Usuários</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Gerenciamento de Usuários</h1>
+
+    <!-- Formulário para adicionar usuário -->
+    <form id="userForm" onsubmit="addUser(event)">
+      <div class="form-group">
+        <label for="username">Nome de usuário:</label>
+        <input type="text" id="username" class="form-control" placeholder="Digite o nome de usuário" required>
+        <span id="usernameError" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="form-control" placeholder="Digite o email" required>
+        <span id="emailError" class="error"></span>
+      </div>
+      <button type="submit" class="btn btn-primary">Adicionar Usuário</button>
+    </form>
+
+    <!-- Filtragem e Ordenação -->
+    <div class="filters">
+      <label for="filterByName">Filtrar por nome:</label>
+      <input type="text" id="filterByName" class="form-control" placeholder="Digite para filtrar">
+      <button id="sortByNameBtn" class="btn btn-secondary">Ordenar por Nome</button>
+    </div>
+
+    <!-- Lista de usuários -->
+    <div id="userList" class="user-list">
+      <!-- Aqui serão renderizados os usuários dinamicamente -->
+    </div>
+
+    <!-- Paginação -->
+    <div id="pagination" class="pagination">
+      <button id="prevPageBtn" class="btn btn-secondary">Anterior</button>
+      <span id="currentPage" class="page-number">Página 1 de 1</span>
+      <button id="nextPageBtn" class="btn btn-secondary">Próxima</button>
+    </div>
+
+    <!-- Modal de confirmação de exclusão -->
+    <div id="confirmModal" class="modal">
+      <div class="modal-content">
+        <span id="modalMessage"></span>
+        <button id="confirmBtn" class="btn btn-danger">Confirmar</button>
+        <button id="cancelBtn" class="btn btn-secondary" onclick="closeModal('confirmModal')">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- Modal de edição de usuário -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('editModal')">&times;</span>
+        <form id="editForm">
+          <div class="form-group">
+            <label for="editUsername">Nome de usuário:</label>
+            <input type="text" id="editUsername" class="form-control" placeholder="Digite o nome de usuário" required>
+          </div>
+          <div class="form-group">
+            <label for="editEmail">Email:</label>
+            <input type="email" id="editEmail" class="form-control" placeholder="Digite o email" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Mensagem de feedback -->
+    <div id="feedbackMessage" class="feedback"></div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </div>
+</body>
+</html>
